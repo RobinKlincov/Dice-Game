@@ -28,17 +28,16 @@ namespace ProgramA
         
 
 
-            var sum = CalcPermutations(new List<int>(), die_1, die_2); //Lagras i sum som en lista med hjälp av nedanstående metod
+            var sum = CalcPermutations(new List<int>(), die_1, die_2); 
             var most = sum.GroupBy(i => i).OrderByDescending(grp => grp.Count())
                 .Select(grp => new { Number = grp.Key, Occurences = grp.Count() }).ToList();
             int maximum = most.Max(x => x.Occurences);
             most.Where(y => y.Occurences == maximum)
                 .ToList()
-                .ForEach(o => Console.WriteLine(o.Number));  // dessa rader grupperar, sorterar och skriver ut de tal som får högst sannolikhet, även om det är ett eller flera. Exakt som exempeldatan. 
-
+                .ForEach(o => Console.WriteLine(o.Number));  
 
         }
-        public static List<int> CalcPermutations(List<int> listOfSum, int die_1, int die_2)  // Slår ihop tärningarna, loopar båda tärningrna och adderar i en lista som används ovanför.
+        public static List<int> CalcPermutations(List<int> listOfSum, int die_1, int die_2)  
         {
             for (int i = 1; i <= die_1; i++)
             {
